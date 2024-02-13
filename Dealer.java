@@ -71,14 +71,35 @@ public class Dealer extends Actor
     
     /* In this space write the pseudocode for your selection sort
      * 
-     * 
+     * it will get a unsorted arry of cards and starting from the first index it will
+     * check with all all ther cards in deck if that cards value is smaller than its self.
+     * If it is smaller than its self it swaps its value with the card checked. When it 
+     * finds the smalles card in the deck it will put it in a nsorted card array in order 
+     * of smallest to larges.
      * 
      */
     private Card[] selectionSort(Card[] arr, int n)
     {
         //put sort algorithm here
         
-        return selectionSort;
+        for(int i = 0; i < arr.length; i++)
+        {
+            int currentSmallest = i;
+            
+            for(int k = i; k < arr.length; k++)
+            {
+                if(arr[currentSmallest].getValue() > arr[k].getValue())
+                {
+                    currentSmallest = k;
+                }
+            }
+            
+            Card holdWhileSwap = arr[i];
+            arr[i] = arr[currentSmallest];
+            arr[currentSmallest] = holdWhileSwap;
+        }
+        
+        return arr;
     }
     
     /* In this space write the pseudocode for your insertion sort
