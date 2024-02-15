@@ -1,5 +1,6 @@
 import greenfoot.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * This class declares, instantiates, and initializes a new deck.  Students 
@@ -104,15 +105,46 @@ public class Dealer extends Actor
     
     /* In this space write the pseudocode for your insertion sort
      * 
-     * 
+     * everything gets added to and ArrayList. Then the rest of the card gets 
+     * compared to the unsorted part. It itetating through all cards. If the card that is being checked is greater 
+     * it checks if the  next card is grater. If it is smaller it is put before the card it is checking 
+     * against. If it checkes all the card and is the graitest it is added to the end of the ussorted ArrayList
      * 
      */
     private Card[] insertionSort(Card[] arr, int n)
     {
-        
         //put sort algorithm here
+        ArrayList<Card> cards = new ArrayList(Arrays.asList(arr));
         
-        return insertionSort;
+        for(int i = 1; i < arr.length; i++)
+        {
+            for(int k = 0; k < i; k++)
+            {
+                if(cards.get(i).getValue() < cards.get(k).getValue())
+                {
+                    cards.add(k, cards.get(i));
+                    cards.remove(i + 1);
+                    break;
+                }
+            }
+        }
+        
+        
+        /*
+        for(int i = 1; i < arr.length; i++)
+        {
+            for(int k = 0; k < cards.size(); k++)
+            {
+                if(arr[i].getValue() < cards.get(k).getValue())
+                {
+                    cards.add(k, arr[i]);
+                }
+            }
+        }
+        */
+       
+        Card[] arrayCards = cards.toArray(new Card[cards.size()]);
+        return arrayCards;
     }
     
     /* In this space write the pseudocode for your merge sort
